@@ -31,23 +31,22 @@ impl Default for MajorVersion {
 }
 
 pub struct MinorVersion(
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
     u16, // <-- MAJOR ver
-    pub PatchVersion,
-    pub PatchVersion,
-    pub PatchVersion,
-    pub PatchVersion,
-    pub PatchVersion,
-    pub PatchVersion,
-    pub PatchVersion,
-    pub PatchVersion,
-    pub PatchVersion,
-    pub PatchVersion,
 );
 
 impl MinorVersion {
     pub fn new(major_ver: u16) -> Self {
         Self(
-            major_ver,
             PatchVersion::new(0 * major_ver),
             PatchVersion::new(1 * major_ver),
             PatchVersion::new(2 * major_ver),
@@ -58,28 +57,28 @@ impl MinorVersion {
             PatchVersion::new(7 * major_ver),
             PatchVersion::new(8 * major_ver),
             PatchVersion::new(9 * major_ver),
+            major_ver,
         )
     }
 }
 
 pub struct PatchVersion(
+    pub u16,
+    pub u16,
+    pub u16,
+    pub u16,
+    pub u16,
+    pub u16,
+    pub u16,
+    pub u16,
+    pub u16,
+    pub u16,
     u16, // <-- MINOR ver
-    pub u16,
-    pub u16,
-    pub u16,
-    pub u16,
-    pub u16,
-    pub u16,
-    pub u16,
-    pub u16,
-    pub u16,
-    pub u16,
 );
 
 impl PatchVersion {
     pub fn new(minor_ver: u16) -> Self {
         Self(
-            minor_ver,
             0 * minor_ver,
             1 * minor_ver,
             2 * minor_ver,
@@ -90,6 +89,7 @@ impl PatchVersion {
             7 * minor_ver,
             8 * minor_ver,
             9 * minor_ver,
+            minor_ver,
         )
     }
 }
