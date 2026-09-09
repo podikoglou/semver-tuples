@@ -16,7 +16,6 @@ pub struct MajorVersion(
 impl Default for MajorVersion {
     fn default() -> Self {
         Self(
-            MinorVersion::new(0),
             MinorVersion::new(1),
             MinorVersion::new(2),
             MinorVersion::new(3),
@@ -26,6 +25,7 @@ impl Default for MajorVersion {
             MinorVersion::new(7),
             MinorVersion::new(8),
             MinorVersion::new(9),
+            MinorVersion::new(10),
         )
     }
 }
@@ -47,7 +47,6 @@ pub struct MinorVersion(
 impl MinorVersion {
     pub fn new(major_ver: u16) -> Self {
         Self(
-            PatchVersion::new(0 * major_ver),
             PatchVersion::new(1 * major_ver),
             PatchVersion::new(2 * major_ver),
             PatchVersion::new(3 * major_ver),
@@ -57,6 +56,7 @@ impl MinorVersion {
             PatchVersion::new(7 * major_ver),
             PatchVersion::new(8 * major_ver),
             PatchVersion::new(9 * major_ver),
+            PatchVersion::new(10 * major_ver),
             major_ver,
         )
     }
@@ -79,7 +79,6 @@ pub struct PatchVersion(
 impl PatchVersion {
     pub fn new(minor_ver: u16) -> Self {
         Self(
-            0 * minor_ver,
             1 * minor_ver,
             2 * minor_ver,
             3 * minor_ver,
@@ -89,6 +88,7 @@ impl PatchVersion {
             7 * minor_ver,
             8 * minor_ver,
             9 * minor_ver,
+            10 * minor_ver,
             minor_ver,
         )
     }
