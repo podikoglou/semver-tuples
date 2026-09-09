@@ -1,5 +1,5 @@
 [package]
-name = "tuple-semver"
+name = "semver-tuples"
 version = "0.1.0"
 edition = "2024"
 
