@@ -2,30 +2,30 @@ use lazy_static::lazy_static;
 
 #[derive(Default)]
 pub struct MajorVersion(
-    pub Box<MinorVersion>,
-    pub Box<MinorVersion>,
-    pub Box<MinorVersion>,
-    pub Box<MinorVersion>,
-    pub Box<MinorVersion>,
-    pub Box<MinorVersion>,
-    pub Box<MinorVersion>,
-    pub Box<MinorVersion>,
-    pub Box<MinorVersion>,
-    pub Box<MinorVersion>,
+    pub MinorVersion,
+    pub MinorVersion,
+    pub MinorVersion,
+    pub MinorVersion,
+    pub MinorVersion,
+    pub MinorVersion,
+    pub MinorVersion,
+    pub MinorVersion,
+    pub MinorVersion,
+    pub MinorVersion,
 );
 
 #[derive(Default)]
 pub struct MinorVersion(
-    pub Box<PatchVersion>,
-    pub Box<PatchVersion>,
-    pub Box<PatchVersion>,
-    pub Box<PatchVersion>,
-    pub Box<PatchVersion>,
-    pub Box<PatchVersion>,
-    pub Box<PatchVersion>,
-    pub Box<PatchVersion>,
-    pub Box<PatchVersion>,
-    pub Box<PatchVersion>,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
+    pub PatchVersion,
 );
 
 #[derive(Default)]
