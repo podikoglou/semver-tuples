@@ -103,10 +103,11 @@ mod test {
     use crate::v;
 
     #[test]
-    fn test() {
-        let a = v.1.2.3;
-        let b = v.1.2.4;
+    fn test_comparison() {
+        assert!(v.0.0.0 == v.0.0.0);
 
-        assert!(b > a);
+        assert!(v.0.0.4 > v.0.0.3);
+        assert!(v.0.2.4 > v.0.2.3);
+        assert!(v.1.2.4 > v.1.2.3);
     }
 }
