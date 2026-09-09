@@ -30,16 +30,16 @@ pub struct MinorVersion(
 
 #[derive(Default)]
 pub struct PatchVersion(
-    pub (),
-    pub (),
-    pub (),
-    pub (),
-    pub (),
-    pub (),
-    pub (),
-    pub (),
-    pub (),
-    pub (),
+    pub u8,
+    pub u8,
+    pub u8,
+    pub u8,
+    pub u8,
+    pub u8,
+    pub u8,
+    pub u8,
+    pub u8,
+    pub u8,
 );
 
 lazy_static! {
