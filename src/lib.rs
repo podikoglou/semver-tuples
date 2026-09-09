@@ -1,6 +1,5 @@
 use lazy_static::lazy_static;
 
-#[derive(Default)]
 pub struct MajorVersion(
     pub MinorVersion,
     pub MinorVersion,
@@ -14,7 +13,6 @@ pub struct MajorVersion(
     pub MinorVersion,
 );
 
-#[derive(Default)]
 pub struct MinorVersion(
     pub PatchVersion,
     pub PatchVersion,
@@ -28,7 +26,6 @@ pub struct MinorVersion(
     pub PatchVersion,
 );
 
-#[derive(Default)]
 pub struct PatchVersion(
     pub u8,
     pub u8,
