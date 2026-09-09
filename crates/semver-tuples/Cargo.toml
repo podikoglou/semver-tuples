@@ -1,0 +1,12 @@
+[package]
+name = "semver-tuples"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+lazy_static = "1.5.0"
+semver-tuples-proc-macro = { path = "../semver-tuples-proc-macro" }
+
+[dev-dependencies]
+hegeltest = "0.41.1"
+semver = "1.0.28"

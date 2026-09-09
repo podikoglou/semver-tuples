@@ -16,9 +16,9 @@ checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
 
 [[package]]
 name = "hegeltest"
-version = "0.41.3"
+version = "0.41.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "78644e6b25c4a9d4a3e1749bc361e834c85e9907e799bfd82f9db2b4b8a081af"
+checksum = "a66843dc9082b0b3b7db985265dc7a30dcd1b702cba4c55dd51735bf31b3ef46"
 dependencies = [
  "hegeltest-macros",
  "parking_lot",
@@ -27,9 +27,9 @@ dependencies = [
 
 [[package]]
 name = "hegeltest-macros"
-version = "0.41.3"
+version = "0.41.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3a7138e712a240579a8e72df94424c251ac05140b435a91386427e3cd0a81253"
+checksum = "a0340e981b40dd0454311115aa6f89119901703b52ee5791d073387198b08bf0"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -138,12 +138,7 @@ dependencies = [
  "hegeltest",
  "lazy_static",
  "semver",
- "semver-tuples-proc-macro",
 ]
-
-[[package]]
-name = "semver-tuples-proc-macro"
-version = "0.1.0"
 
 [[package]]
 name = "serde"
