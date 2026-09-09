@@ -16,6 +16,7 @@ pub struct MajorVersion(
 impl Default for MajorVersion {
     fn default() -> Self {
         Self(
+            MinorVersion::new(0),
             MinorVersion::new(1),
             MinorVersion::new(2),
             MinorVersion::new(3),
@@ -25,7 +26,6 @@ impl Default for MajorVersion {
             MinorVersion::new(7),
             MinorVersion::new(8),
             MinorVersion::new(9),
-            MinorVersion::new(10),
         )
     }
 }
@@ -47,16 +47,16 @@ pub struct MinorVersion(
 impl MinorVersion {
     pub fn new(major_ver: u16) -> Self {
         Self(
-            PatchVersion::new(1 * major_ver),
-            PatchVersion::new(2 * major_ver),
-            PatchVersion::new(3 * major_ver),
-            PatchVersion::new(4 * major_ver),
-            PatchVersion::new(5 * major_ver),
-            PatchVersion::new(6 * major_ver),
-            PatchVersion::new(7 * major_ver),
-            PatchVersion::new(8 * major_ver),
-            PatchVersion::new(9 * major_ver),
-            PatchVersion::new(10 * major_ver),
+            PatchVersion::new(major_ver * 100 + 0 * 10),
+            PatchVersion::new(major_ver * 100 + 1 * 10),
+            PatchVersion::new(major_ver * 100 + 2 * 10),
+            PatchVersion::new(major_ver * 100 + 3 * 10),
+            PatchVersion::new(major_ver * 100 + 4 * 10),
+            PatchVersion::new(major_ver * 100 + 5 * 10),
+            PatchVersion::new(major_ver * 100 + 6 * 10),
+            PatchVersion::new(major_ver * 100 + 7 * 10),
+            PatchVersion::new(major_ver * 100 + 8 * 10),
+            PatchVersion::new(major_ver * 100 + 9 * 10),
             major_ver,
         )
     }
@@ -79,16 +79,16 @@ pub struct PatchVersion(
 impl PatchVersion {
     pub fn new(minor_ver: u16) -> Self {
         Self(
-            1 * minor_ver,
-            2 * minor_ver,
-            3 * minor_ver,
-            4 * minor_ver,
-            5 * minor_ver,
-            6 * minor_ver,
-            7 * minor_ver,
-            8 * minor_ver,
-            9 * minor_ver,
-            10 * minor_ver,
+            minor_ver + 0,
+            minor_ver + 1,
+            minor_ver + 2,
+            minor_ver + 3,
+            minor_ver + 4,
+            minor_ver + 5,
+            minor_ver + 6,
+            minor_ver + 7,
+            minor_ver + 8,
+            minor_ver + 9,
             minor_ver,
         )
     }
@@ -116,7 +116,7 @@ mod test {
 
     #[hegel::test]
     fn test_matches_builtin(tc: TestCase) {
-        let version_num = gs::integers().min_value(0).max_value(10);
+        let version_num = gs::integers().min_value(0).max_value(9);
 
         let (a_major, a_minor, a_patch, b_major, b_minor, b_patch) = tc.draw(gs::tuples!(
             &version_num,
@@ -141,7 +141,6 @@ mod test {
             (0, 0, 7) => v.0.0.7,
             (0, 0, 8) => v.0.0.8,
             (0, 0, 9) => v.0.0.9,
-            (0, 0, 10) => v.0.0.10,
 
             (0, 1, 0) => v.0.1.0,
             (0, 1, 1) => v.0.1.1,
@@ -165,7 +164,7 @@ mod test {
             (0, 2, 8) => v.0.2.8,
             (0, 2, 9) => v.0.2.9,
 
-            (0, 3, 0) => v.0.4.0,
+            (0, 3, 0) => v.0.3.0,
             (0, 3, 1) => v.0.3.1,
             (0, 3, 2) => v.0.3.2,
             (0, 3, 3) => v.0.3.3,
@@ -275,7 +274,7 @@ mod test {
             (1, 2, 8) => v.1.2.8,
             (1, 2, 9) => v.1.2.9,
 
-            (1, 3, 0) => v.1.4.0,
+            (1, 3, 0) => v.1.3.0,
             (1, 3, 1) => v.1.3.1,
             (1, 3, 2) => v.1.3.2,
             (1, 3, 3) => v.1.3.3,
@@ -385,7 +384,7 @@ mod test {
             (2, 2, 8) => v.2.2.8,
             (2, 2, 9) => v.2.2.9,
 
-            (2, 3, 0) => v.2.4.0,
+            (2, 3, 0) => v.2.3.0,
             (2, 3, 1) => v.2.3.1,
             (2, 3, 2) => v.2.3.2,
             (2, 3, 3) => v.2.3.3,
@@ -495,7 +494,7 @@ mod test {
             (3, 2, 8) => v.3.2.8,
             (3, 2, 9) => v.3.2.9,
 
-            (3, 3, 0) => v.3.4.0,
+            (3, 3, 0) => v.3.3.0,
             (3, 3, 1) => v.3.3.1,
             (3, 3, 2) => v.3.3.2,
             (3, 3, 3) => v.3.3.3,
@@ -605,7 +604,7 @@ mod test {
             (4, 2, 8) => v.4.2.8,
             (4, 2, 9) => v.4.2.9,
 
-            (4, 3, 0) => v.4.4.0,
+            (4, 3, 0) => v.4.3.0,
             (4, 3, 1) => v.4.3.1,
             (4, 3, 2) => v.4.3.2,
             (4, 3, 3) => v.4.3.3,
@@ -715,7 +714,7 @@ mod test {
             (5, 2, 8) => v.5.2.8,
             (5, 2, 9) => v.5.2.9,
 
-            (5, 3, 0) => v.5.4.0,
+            (5, 3, 0) => v.5.3.0,
             (5, 3, 1) => v.5.3.1,
             (5, 3, 2) => v.5.3.2,
             (5, 3, 3) => v.5.3.3,
@@ -825,7 +824,7 @@ mod test {
             (6, 2, 8) => v.6.2.8,
             (6, 2, 9) => v.6.2.9,
 
-            (6, 3, 0) => v.6.4.0,
+            (6, 3, 0) => v.6.3.0,
             (6, 3, 1) => v.6.3.1,
             (6, 3, 2) => v.6.3.2,
             (6, 3, 3) => v.6.3.3,
@@ -935,7 +934,7 @@ mod test {
             (7, 2, 8) => v.7.2.8,
             (7, 2, 9) => v.7.2.9,
 
-            (7, 3, 0) => v.7.4.0,
+            (7, 3, 0) => v.7.3.0,
             (7, 3, 1) => v.7.3.1,
             (7, 3, 2) => v.7.3.2,
             (7, 3, 3) => v.7.3.3,
@@ -1045,7 +1044,7 @@ mod test {
             (8, 2, 8) => v.8.2.8,
             (8, 2, 9) => v.8.2.9,
 
-            (8, 3, 0) => v.8.4.0,
+            (8, 3, 0) => v.8.3.0,
             (8, 3, 1) => v.8.3.1,
             (8, 3, 2) => v.8.3.2,
             (8, 3, 3) => v.8.3.3,
@@ -1155,7 +1154,7 @@ mod test {
             (9, 2, 8) => v.9.2.8,
             (9, 2, 9) => v.9.2.9,
 
-            (9, 3, 0) => v.9.4.0,
+            (9, 3, 0) => v.9.3.0,
             (9, 3, 1) => v.9.3.1,
             (9, 3, 2) => v.9.3.2,
             (9, 3, 3) => v.9.3.3,
